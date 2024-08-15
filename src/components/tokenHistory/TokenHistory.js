@@ -3,7 +3,7 @@ import {ethers} from 'ethers'
 function TokenHistory({walletAddress, contractAddress}) {
 
     const apiKey = 'KBSTDXJY5Q7X1A9Q9YGIFR4NNHNSR8GQJE';
-    const baseUrl = 'https://api.etherscan.io/api';
+    const baseUrl = 'https://api-goerli.etherscan.io/api';
     const startDate = '2022-01-01';
     const endDate = '2024-01-02'
 
@@ -33,7 +33,7 @@ function TokenHistory({walletAddress, contractAddress}) {
           }        
     }
 
-    
+
     useEffect(()=>{
         fetchTokenHistory();
     }, []);
