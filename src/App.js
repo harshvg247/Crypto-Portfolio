@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar';
 import Watchlist from './components/watchlist/Watchlist';
 import styles from './App.module.css';
 import TokenHistory from './components/tokenHistory/TokenHistory';
+import NativeTokenInfo from './components/nativeTokenInfo/NativeTokenInfo';
 import { ethers } from "ethers";
 function App() {
   const [walletAddress, setWalletAddress] = useState(null);
@@ -59,6 +60,7 @@ function App() {
 
       // Validate Ethereum address
       if (ethers.isAddress(manualAddress)) {
+        provider = new ethers.getDefaultProvider('mainnet');
         setWalletAddress(manualAddress);
         setIsConnected(false);
       } else {
@@ -82,7 +84,7 @@ function App() {
         </input>
         <button onClick={handleManualAddressSubmit}>Submit</button>
       </div>
-
+      {walletAddress && <NativeTokenInfo walletAddress={walletAddress}/>}
       {walletAddress && <Watchlist walletAddress={walletAddress}/>}
       {/* {walletAddress && <TokenHistory walletAddress={walletAddress} />} */}
 

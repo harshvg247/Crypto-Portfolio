@@ -7,11 +7,12 @@ function TokenHistory({walletAddress, contractAddress}) {
     const startDate = '2022-01-01';
     const endDate = '2024-01-02'
 
+
     const fetchTokenHistory = async()=>{
         try {
-            const response = await fetch(`${baseUrl}?module=account&action=tokentx&contractaddress=${contractAddress}&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`);
+                const response = await fetch(`${baseUrl}?module=account&action=tokentx&contractaddress=${contractAddress}&address=${walletAddress}&startblock=0&endblock=99999999&sort=asc&apikey=${apiKey}`);
             const data = await response.json();
-        
+            console.log(data);
             // Filter transactions based on date range
             const filteredData = data.result.filter(tx => {
               const txDate = new Date(tx.timeStamp * 1000); // Convert timestamp to date
